@@ -6,6 +6,7 @@ import akka.stream.scaladsl.Source
 import com.github.morotsman.dixa.grcp._
 
 
+// TODO is mat needed?
 class PrimeNumberServiceImpl(implicit mat: Materializer) extends PrimesService {
 
   import PrimeNumberGenerator._

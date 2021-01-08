@@ -1,4 +1,4 @@
-package com.github.morotsman.dixa.grcp.functional_test
+package com.github.morotsman.dixa.grcp.functional_test.prime_service
 
 import akka.actor.ActorSystem
 import akka.grpc.GrpcClientSettings
@@ -22,12 +22,16 @@ class PrimeNumberServiceImplTest extends TestKit(ActorSystem("PrimesServer", Pri
   with ScalaFutures
 {
 
+  private val location = "localhost"
+  private val port = 8080
+
   private implicit val clientSystem: ActorSystem = ActorSystem("PrimesClient")
-  private val clientSettings = GrpcClientSettings.connectToServiceAt("127.0.0.1", 8080).withTls(false)
+  private val clientSettings = GrpcClientSettings.connectToServiceAt(location, port).withTls(false)
   private val client = PrimesServiceClient(clientSettings)
 
   override def beforeAll(): Unit = {
-    val bound: Future[Http.ServerBinding] = new PrimeNumberServer(system).run()
+    val ec = system.dispatcher
+    val bound: Future[Http.ServerBinding] = PrimeNumberServer.start(location, port)(system, ec)
     bound.futureValue
   }
 

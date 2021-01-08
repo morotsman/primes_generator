@@ -9,7 +9,7 @@ import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-import scala.concurrent.{Await}
+import scala.concurrent.Await
 import scala.concurrent.duration._
 
 class PrimeNumberServiceImplTest extends AnyWordSpec

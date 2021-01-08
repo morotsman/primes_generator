@@ -22,6 +22,10 @@ libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck" % "1.15.2" % "test",
   "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % "test",
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % "test",
+  "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % "test",
+  "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % "test",
+  "org.scalamock" %% "scalamock" % "5.1.0" % "test"
+
 )
 
 enablePlugins(AkkaGrpcPlugin)
