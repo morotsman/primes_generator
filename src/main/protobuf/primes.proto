@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.github.morotsman.dixa.grcp";
+option java_outer_classname = "PrimesProto";
+
+package primes;
+
+////////////////////////////////////// The greeting service definition.
+service PrimesService {
+
+
+  rpc generatePrimes (PrimesRequest) returns (stream PrimesReply) {}
+
+}
+
+// The request message containing the user's name.
+message PrimesRequest {
+  int32 upTo = 1;
+}
+
+// The response message containing the greetings
+message PrimesReply {
+  int64 prime = 1;
+}
