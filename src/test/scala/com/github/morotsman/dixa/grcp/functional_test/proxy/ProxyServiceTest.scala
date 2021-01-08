@@ -5,6 +5,7 @@ import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.stream.scaladsl.Source
 import com.github.morotsman.dixa.grcp.proxy.ProxyService
 import com.github.morotsman.dixa.grcp.{PrimesReply, PrimesRequest, PrimesService}
+import io.grpc.{Status, StatusRuntimeException}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec

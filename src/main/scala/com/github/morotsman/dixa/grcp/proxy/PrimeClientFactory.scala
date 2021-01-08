@@ -10,7 +10,7 @@ object PrimeClientFactory {
   private val config = ConfigFactory.load()
   private val primeGeneratorLocation = config.getConfig("proxy_service").getString("prime.generator.location")
   private val primeGeneratorPort = config.getConfig("proxy_service").getInt("prime.generator.port")
-
+z
   // TODO investigate withTls
   def apply(implicit system: ActorSystem): PrimesServiceClient = {
     val clientSettings = GrpcClientSettings.connectToServiceAt(primeGeneratorLocation, primeGeneratorPort).withTls(false)

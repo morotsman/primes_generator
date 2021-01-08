@@ -1,19 +1,12 @@
 package com.github.morotsman.dixa.grcp.proxy
 
 import akka.actor.ActorSystem
-import akka.util.ByteString
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
-import akka.http.scaladsl.server.Directives._
 
-import scala.io.StdIn
-import akka.NotUsed
-import akka.grpc.GrpcClientSettings
-import akka.stream.scaladsl.Source
 import com.github.morotsman.dixa.grcp._
-import com.typesafe.config.{Config, ConfigFactory}
+import com.typesafe.config.ConfigFactory
 
-import scala.concurrent.ExecutionContextExecutor
+import scala.concurrent.{ExecutionContextExecutor, Future}
 
 
 object ProxyServer {
@@ -29,15 +22,14 @@ object ProxyServer {
     ProxyServer.start(location, port)
   }
 
-  private def start(location: String, port: Int)(implicit system: ActorSystem, ec: ExecutionContextExecutor): Unit = {
-    val client: PrimesServiceClient = PrimeClientFactory(system)
-
-    // TODO error handling, logging, metrics
+  private def start(location: String, port: Int)(implicit system: ActorSystem, ec: ExecutionContextExecutor): Future[Http.ServerBinding] = {
+    val client = PrimeClientFactory(system)
     val proxyService = new ProxyService(client)
 
     val binding = Http().newServerAt(location, 8081).bind(proxyService.route)
 
     binding.foreach { binding => println(s"Proxy server bound to: ${binding.localAddress}") }
+    binding
   }
 }
 
