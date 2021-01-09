@@ -54,7 +54,7 @@ class PrimeNumberServiceImplTest extends TestKit(ActorSystem("PrimesServer", Pri
         requestUpTo(-1)
       }
       val status = Status.fromThrowable(thrown)
-      assert(status.getDescription === "upTo must be greater equal or equal to zero")
+      assert(status.getDescription === "upTo must be greater or equal to zero")
       assert(status.getCode === Status.INVALID_ARGUMENT.getCode)
     }
 

@@ -42,7 +42,7 @@ class PrimeNumberServiceImplTest extends AnyWordSpec
       val thrown = intercept[Exception] {
         requestUpTo(-1)
       }
-      assert(thrown.getMessage === "upTo must be greater equal or equal to zero")
+      assert(thrown.getMessage === "upTo must be greater or equal to zero")
     }
 
     "reply with a stream of 0 prime numbers if upTo 0 is requested" in {

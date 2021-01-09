@@ -2,13 +2,11 @@ package com.github.morotsman.dixa.grcp.prime_service
 
 import akka.NotUsed
 import akka.grpc.GrpcServiceException
-import akka.stream.Materializer
 import akka.stream.scaladsl.Source
 import com.github.morotsman.dixa.grcp._
 import io.grpc.Status
 
-// TODO is mat needed?
-class PrimeNumberServiceImpl(implicit mat: Materializer) extends PrimesService {
+class PrimeNumberServiceImpl() extends PrimesService {
 
   import PrimeNumberGenerator._
 
