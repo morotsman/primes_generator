@@ -39,9 +39,9 @@ object PrimeNumberServer extends LazyLogging{
 
     binding.onComplete{
       case Success(binding) =>
-        logger.info(s"Proxy server bound to: ${binding.localAddress}")
+        logger.info(s"Prime genrator server bound to: ${binding.localAddress}")
       case Failure(exception) =>
-        logger.info(s"Could not start the proxy service: ${exception.getMessage}")
+        logger.info(s"Could not start the prime generator service: ${exception.getMessage}")
     }
 
     binding

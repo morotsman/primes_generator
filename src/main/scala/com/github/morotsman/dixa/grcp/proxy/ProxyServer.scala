@@ -29,6 +29,7 @@ object ProxyServer extends LazyLogging {
 
     val binding = Http().newServerAt(location, port)
       .bind(proxyService.route)
+      // // https://doc.akka.io/docs/akka-http/current/server-side/graceful-termination.html
       .map(_.addToCoordinatedShutdown(hardTerminationDeadline = shutdownTimeout.millis))
 
     binding.onComplete{
