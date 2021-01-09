@@ -176,9 +176,6 @@ Create a Jekins file so that we can build/test and deploy things. Out of scope?
 
 Produce docker images so that the services can be deployed on Kubernetes. Out of scope?
 
-## Logging
- 
-
 
 [articles]: https://grokbase.com/t/thrift/user/153r7sfyyb/streaming-support-for-thrift-in-java
 [support]: https://doc.akka.io/docs/akka-grpc/current/server/walkthrough.html

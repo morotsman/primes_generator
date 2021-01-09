@@ -12,6 +12,9 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
   "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
 
+  "com.typesafe.akka" %% "akka-slf4j" % AkkaVersion,
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
+
   // resolve conflicts
   "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
   "com.typesafe.akka" %% "akka-http2-support" % AkkaHttpVersion,
