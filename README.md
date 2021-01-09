@@ -100,15 +100,17 @@ I decided to use akka streams to expose the REST api:
     
     val route: Route =
         get {
-          path("prime" / IntNumber) { numberOfPrimes => {
-            complete {
-              val source = primes(numberOfPrimes).map(n => ByteString(s"${n.prime}\n"))
-              // It's possible to add some error handling here: https://doc.akka.io/docs/akka/current/stream/stream-error.html
-              HttpEntity(ContentTypes.`text/plain(UTF-8)`, source)
+        path("prime" / IntNumber) { numberOfPrimes => {
+            logRequest(s"prime/$numberOfPrimes", Logging.InfoLevel) {
+                complete {
+                    val source = primes(numberOfPrimes).map(n => ByteString(s"${n.prime}\n"))
+                    // It's possible to add some error handling here: https://doc.akka.io/docs/akka/current/stream/stream-error.html
+                    HttpEntity(ContentTypes.`text/plain(UTF-8)`, source)
+                }
             }
-          }
-          }
         }
+      }
+    }
 
 I define a source `primes` that is connected to the prime service, I then return the source in the response. 
 
