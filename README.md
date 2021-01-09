@@ -14,7 +14,7 @@ I have never used Thrift or gRCP before so I had to do some reading up on the su
 
 When investigating Thrift and streaming, I found [articles] like this one that discourage me to use it.  
 
-On the other hand, when I read about gRCP it has support for streaming. I also found that Akka has [support] for it and since I'm fond of the library I decided to go for gRCP.
+On the other hand, when I read about gRCP I found that it has support for streaming. I also found that Akka has [support] for it and since I'm fond of the library I decided to go for gRCP and Akka.
 
 ### Prime number generator
 
@@ -132,20 +132,22 @@ To manually test this one can use [httpie]. Here are is an example:
 
 We reuse the proto file to generate the code that is necessary to communicate with the prime number generator.
 
-### The assignment completed?
+###The assignment completed?
 
-Ok, so now the functionality is in place. There exists some error handling on the REST API. However there are still things that could be improved. 
+So now the functionality is in place. There also exists some error handling on the REST API. 
+
+However there are still things that could be improved.
 
 
 ## Contract testing
 
 When working with GraphQL which also has a defined schema I came in contact with [contract testing]. The contract tests great for finding breaking changes in API's.
 
-It would be possible to have something similar for gRCP, but to investigate that is out of scope for this assignment I think.
+It would be possible to have something similar for gRCP, but to investigate that is out of scope for this assignment I think?
 
 ## Error Handling
 
-The requirements did not mention what should happen if "bad" things happens when talking over gRCP.
+The requirements did not mention what should happen if "bad" things happens when talking over gRCP, for example if the prime number generator goes down while we stream.
 
 You can do [retries and other things] but I assumed that this is out of scope?
 
@@ -153,8 +155,17 @@ You can do [retries and other things] but I assumed that this is out of scope?
 
 No service is complete without adding metrics to it, but I assume that this is out of scope as well?
 
+## Deployment pipeline
+
+Create a Jekins file so that we can build/test and deploy things. Out of scope?
+
+## Docker
+
+Produce docker images so that the services can be deployed on Kubernetes. Out of scope?
+
 ## Logging
  
+
 
 [articles]: https://grokbase.com/t/thrift/user/153r7sfyyb/streaming-support-for-thrift-in-java
 [support]: https://doc.akka.io/docs/akka-grpc/current/server/walkthrough.html

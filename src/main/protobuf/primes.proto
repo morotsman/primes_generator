@@ -15,5 +15,5 @@ message PrimesRequest {
 }
 
 message PrimesReply {
-  int64 prime = 1;
+  int32 prime = 1;
 }
