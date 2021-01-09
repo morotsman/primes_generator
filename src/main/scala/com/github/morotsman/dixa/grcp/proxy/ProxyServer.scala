@@ -2,20 +2,22 @@ package com.github.morotsman.dixa.grcp.proxy
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-
 import com.typesafe.config.ConfigFactory
+import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.{ExecutionContextExecutor, Future}
+import scala.concurrent.duration._
+import scala.util.{Failure, Success}
 
-
-object ProxyServer {
+object ProxyServer extends LazyLogging {
 
   private implicit val system: ActorSystem = ActorSystem("ProxyService")
   implicit val ec: ExecutionContextExecutor = system.dispatcher
 
-  private val config = ConfigFactory.load()
-  private val port = config.getConfig("proxy_service").getInt("port")
-  private val location = config.getConfig("proxy_service").getString("location")
+  private val config = ConfigFactory.load().getConfig("proxy_service")
+  private val port = config.getInt("port")
+  private val location = config.getString("location")
+  private val shutdownTimeout = config.getInt("shutdown.timeout.millis")
 
   def main(args: Array[String]): Unit = {
     ProxyServer.start(location, port)
@@ -25,9 +27,17 @@ object ProxyServer {
     val client = PrimeClientFactory(system)
     val proxyService = new ProxyService(client)
 
-    val binding = Http().newServerAt(location, port).bind(proxyService.route)
+    val binding = Http().newServerAt(location, port)
+      .bind(proxyService.route)
+      .map(_.addToCoordinatedShutdown(hardTerminationDeadline = shutdownTimeout.millis))
 
-    binding.foreach { binding => println(s"Proxy server bound to: ${binding.localAddress}") }
+    binding.onComplete{
+      case Success(binding) =>
+        logger.info(s"Proxy server bound to: ${binding.localAddress}")
+      case Failure(exception) =>
+        logger.info(s"Could not start the proxy service: ${exception.getMessage}")
+    }
+
     binding
   }
 }

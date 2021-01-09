@@ -5,12 +5,9 @@
 		</encoder>
 	</appender>
 
-	<logger name="proxy" level="INFO"/>
-	<logger name="prime_service" level="WARNING"/>
-
 	<logger name="akka" level="WARNING"/>
 
-	<root level="ERROR">
+	<root level="INFO">
 		<appender-ref ref="STDOUT"/>
 	</root>
 </configuration>

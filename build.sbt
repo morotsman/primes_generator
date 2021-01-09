@@ -4,10 +4,10 @@ version := "0.1"
 
 scalaVersion := "2.12.12"
 
-
 val AkkaVersion = "2.6.10"
 val AkkaHttpVersion = "10.2.2"
 val LogbackVersion = "1.2.3"
+val ScalaLoggingVersion = "3.9.2"
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
@@ -19,6 +19,7 @@ libraryDependencies ++= Seq(
   // logging
   "com.typesafe.akka" %% "akka-slf4j" % AkkaVersion,
   "ch.qos.logback" % "logback-classic" % LogbackVersion,
+  "com.typesafe.scala-logging" %% "scala-logging" % ScalaLoggingVersion,
 )
 
 val ScalaMockVersion = "5.1.0"
