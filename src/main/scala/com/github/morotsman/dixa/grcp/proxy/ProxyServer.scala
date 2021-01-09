@@ -3,7 +3,6 @@ package com.github.morotsman.dixa.grcp.proxy
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 
-import com.github.morotsman.dixa.grcp._
 import com.typesafe.config.ConfigFactory
 
 import scala.concurrent.{ExecutionContextExecutor, Future}

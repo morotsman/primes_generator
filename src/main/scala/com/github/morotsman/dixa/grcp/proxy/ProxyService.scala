@@ -13,7 +13,6 @@ class ProxyService(client: PrimesService) {
 
   private def primes(numberOfPrimes: Int): Source[PrimesReply, NotUsed] = client.generatePrimes(PrimesRequest(numberOfPrimes))
 
-  // TODO error handling, logging, metrics?
   val route: Route =
     get {
       path("prime" / IntNumber) { numberOfPrimes => {

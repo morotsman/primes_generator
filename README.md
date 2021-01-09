@@ -160,6 +160,10 @@ The requirements did not mention what should happen if "bad" things happens when
 
 You can do [retries and other things] but I assumed that this is out of scope?
 
+## Encryption
+
+Tls is not enabled.
+
 ## Metrics
 
 No service is complete without adding metrics to it, but I assume that this is out of scope as well?
