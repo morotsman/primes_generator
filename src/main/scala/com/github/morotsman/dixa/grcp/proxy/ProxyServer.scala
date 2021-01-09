@@ -25,7 +25,7 @@ object ProxyServer {
     val client = PrimeClientFactory(system)
     val proxyService = new ProxyService(client)
 
-    val binding = Http().newServerAt(location, 8081).bind(proxyService.route)
+    val binding = Http().newServerAt(location, port).bind(proxyService.route)
 
     binding.foreach { binding => println(s"Proxy server bound to: ${binding.localAddress}") }
     binding
