@@ -14,6 +14,7 @@ import org.scalatest.wordspec.AnyWordSpecLike
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
+import io.grpc.Status
 
 class PrimeNumberServiceImplTest extends TestKit(ActorSystem("PrimesServer", PrimeNumberServer.serverConfig))
   with AnyWordSpecLike
@@ -48,12 +49,16 @@ class PrimeNumberServiceImplTest extends TestKit(ActorSystem("PrimesServer", Pri
 
   "PrimeNumberService" should {
 
-    "reply with 0 primes if a negative upTo was requests" in {
-      val result = requestUpTo(-1)
-      result should ===(List())
+    "reply with INVALID_ARGUMENT if a negative upTo was requests" in {
+      val thrown = intercept[Exception] {
+        requestUpTo(-1)
+      }
+      val status = Status.fromThrowable(thrown)
+      assert(status.getDescription === "upTo must be greater equal or equal to zero")
+      assert(status.getCode === Status.INVALID_ARGUMENT.getCode)
     }
 
-    "reply with 0 prime if upTo 1 was requested" in {
+    "reply with 0 prime if upTo 0 was requested" in {
       val result = requestUpTo(1)
       result should ===(List())
     }

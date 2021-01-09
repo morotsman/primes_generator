@@ -2,8 +2,9 @@ package com.github.morotsman.dixa.grcp.prime_service
 
 import akka.actor.testkit.typed.scaladsl.ActorTestKit
 import akka.actor.typed.ActorSystem
-import akka.stream.scaladsl.{Sink}
+import akka.stream.scaladsl.Sink
 import com.github.morotsman.dixa.grcp.{PrimesReply, PrimesRequest}
+import io.grpc.Status
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.matchers.should.Matchers
@@ -37,13 +38,15 @@ class PrimeNumberServiceImplTest extends AnyWordSpec
 
   "PrimeNumberServiceImpl" should {
 
-    "reply with a stream of 0 prime numbers if upTo -1 is requested" in {
-      val result = requestUpTo(-1)
-      result should ===(List())
+    "reply with INVALID_ARGUMENT if a negative upTo was requests" in {
+      val thrown = intercept[Exception] {
+        requestUpTo(-1)
+      }
+      assert(thrown.getMessage === "upTo must be greater equal or equal to zero")
     }
 
-    "reply with a stream of 0 prime numbers if upTo 1 is requested" in {
-      val result = requestUpTo(1)
+    "reply with a stream of 0 prime numbers if upTo 0 is requested" in {
+      val result = requestUpTo(0)
       result should ===(List())
     }
 
