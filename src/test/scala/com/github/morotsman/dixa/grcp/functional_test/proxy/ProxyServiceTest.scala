@@ -5,7 +5,6 @@ import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.stream.scaladsl.Source
 import com.github.morotsman.dixa.grcp.proxy.ProxyService
 import com.github.morotsman.dixa.grcp.{PrimesReply, PrimesRequest, PrimesService}
-import io.grpc.{Status, StatusRuntimeException}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
@@ -58,6 +57,12 @@ class ProxyServiceTest extends AnyWordSpec with Matchers with ScalatestRouteTest
       }
     }
 
+    "return 404 path for request /prime/-17" in {
+      Get("/prime/-17") ~!> route ~> check {
+        status shouldEqual StatusCodes.NotFound
+        responseAs[String] shouldEqual "The requested resource could not be found."
+      }
+    }
 
   }
 
