@@ -48,9 +48,16 @@ The clients gets back a stream of PrimesReply, each containing a valid prime num
 
 To get the stream we are supposed to return to the client I wrap the primes stream (defined above) in a Source.
 
-      override def generatePrimes(in: PrimesRequest): Source[PrimesReply, NotUsed] = {
-        Source(primes).takeWhile(p => p <= in.upTo).map(p => PrimesReply(p))
-      }
+    override def generatePrimes(in: PrimesRequest): Source[PrimesReply, NotUsed] = {
+        if(in.upTo >= 0) {
+            Source(primes).takeWhile(p => p <= in.upTo).map(p => PrimesReply(p))
+        } else {
+            val error = new GrpcServiceException(Status.INVALID_ARGUMENT.withDescription("upTo must be greater or equal to zero"))
+            Source.failed(error)
+        }
+    }
+
+The client is notified that upTo must be greater or equal to zero if upTo is below zero.
 
 ### Tests
 
@@ -103,7 +110,9 @@ I decided to use akka streams to expose the REST api:
           }
         }
 
-I define a source `primes` that is connected to the prime service. I then return the source in the response.
+I define a source `primes` that is connected to the prime service, I then return the source in the response. 
+
+Akka http is handling the error cases (Not Found) etc. One caveat is that IntNumber only matches positive integers. This means that if -17 is sent in the request is rejected with NOT_FOUND instead of BAD_REQUEST which would be more appropriate. 
 
 To manually test this one can use [httpie]. Here are is an example:
 

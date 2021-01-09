@@ -16,7 +16,7 @@ class PrimeNumberServiceImpl(implicit mat: Materializer) extends PrimesService {
     if(in.upTo >= 0) {
       Source(primes).takeWhile(p => p <= in.upTo).map(p => PrimesReply(p))
     } else {
-      val error = new GrpcServiceException(Status.INVALID_ARGUMENT.withDescription("upTo must be greater equal or equal to zero"))
+      val error = new GrpcServiceException(Status.INVALID_ARGUMENT.withDescription("upTo must be greater or equal to zero"))
       Source.failed(error)
     }
   }
