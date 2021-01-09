@@ -16,6 +16,25 @@ Install [httpie] and then:
 
 > http --stream GET :8081/prime/17
 
+
+## Build the APP
+
+I'm building the app with [sbt-native-packager].
+
+    sbt stage
+    cd target/universal/stage
+    ./bin/<app-name>
+
+It's also possible to create dock images:
+
+    sbt
+    # create a zip file
+    > universal:packageBin
+    # create a deb file
+    > debian:packageBin
+    # publish a docker image to your local registry
+    > docker:publishLocal
+
 ## PrimeNumberService
 
 > The `prime-number-server` does the actual Prime number calculation - it serves responses continuously over Finagle OR gRPC and uses proper abstractions to communicate failure 
@@ -197,4 +216,5 @@ Produce docker images so that the services can be deployed on Kubernetes. Out of
 [httpie]: https://httpie.io/
 [contract testing]: https://pactflow.io/blog/what-is-contract-testing/#:~:text=Contract%20testing%20is%20a%20methodology,both%20parties%20adhere%20to%20it.
 [retries and other things]: https://doc.akka.io/docs/akka/current/stream/stream-error.html
+[sbt-native-packager]: https://sbt-native-packager.readthedocs.io/en/latest/archetypes/java_app/index.html
 

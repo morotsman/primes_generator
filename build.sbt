@@ -37,3 +37,4 @@ libraryDependencies ++= Seq(
 )
 
 enablePlugins(AkkaGrpcPlugin)
+enablePlugins(JavaServerAppPackaging)
