@@ -4,6 +4,18 @@
 
 Due to me being a bit lazy I put both services in the same repository, hope that is ok?
 
+## Run the app
+
+> sbt run
+
+Then select which service to start.
+
+Manually test the app:
+
+Install [httpie] and then:
+
+> http --stream GET :8081/prime/17
+
 ## PrimeNumberService
 
 > The `prime-number-server` does the actual Prime number calculation - it serves responses continuously over Finagle OR gRPC and uses proper abstractions to communicate failure 
