@@ -42,6 +42,7 @@ object PrimeNumberServer extends LazyLogging{
         logger.info(s"Prime genrator server bound to: ${binding.localAddress}")
       case Failure(exception) =>
         logger.info(s"Could not start the prime generator service: ${exception.getMessage}")
+        system.terminate()
     }
 
     binding

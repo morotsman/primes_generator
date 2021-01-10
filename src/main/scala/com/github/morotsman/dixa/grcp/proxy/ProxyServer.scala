@@ -37,6 +37,7 @@ object ProxyServer extends LazyLogging {
         logger.info(s"Proxy server bound to: ${binding.localAddress}")
       case Failure(exception) =>
         logger.info(s"Could not start the proxy service: ${exception.getMessage}")
+        system.terminate()
     }
 
     binding
