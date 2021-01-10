@@ -55,7 +55,7 @@ class ProxyServiceTest extends AnyWordSpec with Matchers with ScalatestRouteTest
       }
     }
 
-    "/prime should not be handled" in {
+    "/kermit should not be handled" in {
       Get("/kermit") ~> route ~> check {
         handled shouldBe false
       }

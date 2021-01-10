@@ -4,7 +4,6 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import com.typesafe.config.{Config, ConfigFactory}
 import com.github.morotsman.dixa.grcp._
-import com.github.morotsman.dixa.grcp.proxy.ProxyServer.logger
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.duration._
