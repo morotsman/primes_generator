@@ -244,14 +244,16 @@ Produce docker images so that the services can be deployed on Kubernetes. Out of
 
 ## Deployment script
 
-A Ansible playbook or something similar.
+An Ansible playbook or something similar.
 
 ## Load test
 
 ## Tracing
 
 
-And so on.
+And it goes on and on.
+
+Happy coding!
 
 [articles]: https://grokbase.com/t/thrift/user/153r7sfyyb/streaming-support-for-thrift-in-java
 [support]: https://doc.akka.io/docs/akka-grpc/current/server/walkthrough.html
