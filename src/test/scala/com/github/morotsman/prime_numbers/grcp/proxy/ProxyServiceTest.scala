@@ -11,7 +11,7 @@ import org.scalamock.scalatest.MockFactory
 
 class ProxyServiceTest extends AnyWordSpec with Matchers with ScalatestRouteTest with MockFactory {
 
-  val primeServiceMock = mock[PrimesService]
+  private val primeServiceMock = mock[PrimesService]
 
   private val route = new ProxyService(primeServiceMock).route
 

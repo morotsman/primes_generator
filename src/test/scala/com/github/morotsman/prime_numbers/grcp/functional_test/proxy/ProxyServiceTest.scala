@@ -13,7 +13,7 @@ class ProxyServiceTest extends AnyWordSpec with Matchers with ScalatestRouteTest
 
   // I will still use a scala-mock to simulate repsonses from the PrimeService
   // Another option would be to use some kind of gRcp mock server
-  val primeServiceMock = mock[PrimesService]
+  private val primeServiceMock = mock[PrimesService]
 
   private val route = new ProxyService(primeServiceMock).route
 

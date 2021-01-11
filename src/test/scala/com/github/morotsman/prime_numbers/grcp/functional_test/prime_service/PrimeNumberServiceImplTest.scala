@@ -41,7 +41,7 @@ class PrimeNumberServiceImplTest extends TestKit(ActorSystem("PrimesServer", Pri
     clientSystem.terminate()
   }
 
-  def requestUpTo(upTo: Int) : List[PrimesReply] = {
+  private def requestUpTo(upTo: Int) : List[PrimesReply] = {
     val stream = client.generatePrimes(PrimesRequest(upTo))
     val test = stream.runWith(Sink.seq)
     Await.result(test, 3.seconds ).toList

@@ -21,8 +21,8 @@ object PrimeNumberServer extends LazyLogging{
     .parseString("akka.http.server.preview.enable-http2 = on")
     .withFallback(ConfigFactory.defaultApplication())
 
-  implicit val system: ActorSystem = ActorSystem("Prime_number_generator", serverConfig)
-  implicit val ec: ExecutionContext = system.dispatcher
+  private implicit val system: ActorSystem = ActorSystem("Prime_number_generator", serverConfig)
+  private implicit val ec: ExecutionContext = system.dispatcher
 
   def main(args: Array[String]): Unit = {
     start(location, port)

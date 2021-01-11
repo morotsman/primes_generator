@@ -12,7 +12,7 @@ import scala.util.{Failure, Success}
 object ProxyServer extends LazyLogging {
 
   private implicit val system: ActorSystem = ActorSystem("ProxyService")
-  implicit val ec: ExecutionContextExecutor = system.dispatcher
+  private implicit val ec: ExecutionContextExecutor = system.dispatcher
 
   private val config = ConfigFactory.load().getConfig("proxy_service")
   private val port = config.getInt("port")

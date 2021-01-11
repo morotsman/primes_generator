@@ -29,7 +29,7 @@ class PrimeNumberServiceImplTest extends AnyWordSpec
     testKit.shutdownTestKit()
   }
 
-  def requestUpTo(upTo: Int): List[PrimesReply] = {
+  private def requestUpTo(upTo: Int): List[PrimesReply] = {
     val stream = service.generatePrimes(PrimesRequest(upTo))
     val result = stream.runWith(Sink.seq)
     Await.result(result, 3.seconds).toList
