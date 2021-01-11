@@ -193,10 +193,11 @@ I did a small experiment with back pressure:
 It seems to work but not exactly as I expected, but I read the following [post] that I think explains the behaviour which is.
 
     * The prime generator gets a request
-    * It starts to generate a lot primes but then stops
-    * The client receives primes and eventually start to catch up with the server
-    * The prime generator generates a new batch of primes.
-    * Repeat
+    
+    1 It starts to generate a lot primes but then stops
+    2 The client receives primes and eventually start to catch up with the server
+    3 The prime generator generates a new batch of primes.
+    4 Repeat from 1
 
 
 ###The assignment completed?
@@ -241,6 +242,11 @@ Create a Jenkins file (or similar) so that we can build/test and deploy things. 
 
 Produce docker images so that the services can be deployed on Kubernetes. Out of scope?
 
+## Deployment script
+
+A Ansible playbook or something similar.
+
+And so on.
 
 [articles]: https://grokbase.com/t/thrift/user/153r7sfyyb/streaming-support-for-thrift-in-java
 [support]: https://doc.akka.io/docs/akka-grpc/current/server/walkthrough.html
@@ -250,4 +256,4 @@ Produce docker images so that the services can be deployed on Kubernetes. Out of
 [retries and other things]: https://doc.akka.io/docs/akka/current/stream/stream-error.html
 [sbt-native-packager]: https://sbt-native-packager.readthedocs.io/en/latest/archetypes/java_app/index.html
 [post]: https://discuss.lightbend.com/t/backpressure-support-with-akka-grpc/3192/4
-[expected]: https://doc.akka.io/docs/akka-http/current/server-side/graceful-termination.html
+[addToCoordinatedShutdown]: https://doc.akka.io/docs/akka-http/current/server-side/graceful-termination.html

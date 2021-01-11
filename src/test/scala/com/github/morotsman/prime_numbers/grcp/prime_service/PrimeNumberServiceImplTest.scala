@@ -4,7 +4,6 @@ import akka.actor.testkit.typed.scaladsl.ActorTestKit
 import akka.actor.typed.ActorSystem
 import akka.stream.scaladsl.Sink
 import com.github.morotsman.prime_numbers.grcp.{PrimesReply, PrimesRequest}
-import io.grpc.Status
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.matchers.should.Matchers

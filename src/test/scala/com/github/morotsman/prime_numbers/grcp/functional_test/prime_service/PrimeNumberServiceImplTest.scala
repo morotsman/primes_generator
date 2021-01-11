@@ -15,7 +15,6 @@ import org.scalatest.wordspec.AnyWordSpecLike
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 import io.grpc.Status
-import org.scalatest.matchers.should
 
 class PrimeNumberServiceImplTest extends TestKit(ActorSystem("PrimesServer", PrimeNumberServer.serverConfig))
   with AnyWordSpecLike
