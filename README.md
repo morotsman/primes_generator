@@ -154,6 +154,9 @@ Find the process:
 
     ps -e | grep java | grep ProxyServer
     kill -SIGTERM 31573
+
+When I tested this I didn't get the behaviour I expected when using [addToCoordinatedShutdown], so I have to investigate this more.
+
         
 ## Manual test
 
@@ -178,13 +181,37 @@ To manually test this one can use [httpie]. Here are is an example:
     
     13
     
-    17    
+    17   
+    
+    
+## Back pressure     
+
+I did a small experiment with back pressure:
+
+    curl --limit-rate 10000b 127.0.0.1:8081/prime/2147483647
+    
+It seems to work but not exactly as I expected, but I read the following [post] that I think explains the behaviour which is.
+
+    * The prime generator gets a request
+    * It starts to generate a lot primes but then stops
+    * The client receives primes and eventually start to catch up with the server
+    * The prime generator generates a new batch of primes.
+    * Repeat
+
 
 ###The assignment completed?
 
 So now the functionality is in place with basic error handling. 
 
 However there are still things that needs to be done before the services are ready for production. I however think that they are out of scope for this assignment? I list them below.
+
+## Linting/Check style
+
+Add some sort of linting tool to see that we are following the code standards
+
+## SonarQube
+
+Add static analytic of the code, code coverage etc.
 
 ## Contract testing
 
@@ -198,9 +225,9 @@ The requirements did not mention what should happen if "bad" things happens when
 
 You can do [retries and other things] but I assumed that this is out of scope?
 
-## Encryption
+## Encryption/Security
 
-Tls is not enabled.
+Tls is not enabled. No authorization/authentication.
 
 ## Metrics
 
@@ -222,4 +249,5 @@ Produce docker images so that the services can be deployed on Kubernetes. Out of
 [contract testing]: https://pactflow.io/blog/what-is-contract-testing/#:~:text=Contract%20testing%20is%20a%20methodology,both%20parties%20adhere%20to%20it.
 [retries and other things]: https://doc.akka.io/docs/akka/current/stream/stream-error.html
 [sbt-native-packager]: https://sbt-native-packager.readthedocs.io/en/latest/archetypes/java_app/index.html
-
+[post]: https://discuss.lightbend.com/t/backpressure-support-with-akka-grpc/3192/4
+[expected]: https://doc.akka.io/docs/akka-http/current/server-side/graceful-termination.html
