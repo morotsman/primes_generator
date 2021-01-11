@@ -246,6 +246,11 @@ Produce docker images so that the services can be deployed on Kubernetes. Out of
 
 A Ansible playbook or something similar.
 
+## Load test
+
+## Tracing
+
+
 And so on.
 
 [articles]: https://grokbase.com/t/thrift/user/153r7sfyyb/streaming-support-for-thrift-in-java
