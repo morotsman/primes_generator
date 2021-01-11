@@ -30,11 +30,11 @@ Alternative way to start the app:
 
 ### Protocol
 
-I have never used Thrift or gRCP before so I had to do some reading up on the subject. 
+I have never used Thrift or gRPC before so I had to do some reading up on the subject. 
 
 When investigating Thrift and streaming, I found [articles] like this one that discourage me to use it.  
 
-On the other hand, when I read about gRCP I found that it has support for streaming. I also found that Akka has [support] for it and since I'm fond of the library I decided to go for gRCP and Akka.
+On the other hand, when I read about gRPC I found that it has support for streaming. I also found that Akka has [support] for it and since I'm fond of the library I decided to go for gRPC and Akka.
 
 ### Prime number generator
 
@@ -218,11 +218,11 @@ Add static analytic of the code, code coverage etc.
 
 When working with GraphQL which also has a defined schema I came in contact with [contract testing]. The contract tests great for finding breaking changes in API's.
 
-It would be possible to have something similar for gRCP, but to investigate that is out of scope for this assignment I think?
+It would be possible to have something similar for gRPC, but to investigate that is out of scope for this assignment I think?
 
 ## Error Handling
 
-The requirements did not mention what should happen if "bad" things happens when talking over gRCP, for example if the prime number generator goes down while we stream.
+The requirements did not mention what should happen if "bad" things happens when talking over gRPC, for example if the prime number generator goes down while we stream.
 
 You can do [retries and other things] but I assumed that this is out of scope?
 
