@@ -203,7 +203,7 @@ It seems to work but not exactly as I expected, but I read the following [post] 
 
 So now the functionality is in place with basic error handling. 
 
-However there are still things that needs to be done before the services are ready for production. I however think that they are out of scope for this assignment? I list them below.
+However there are still things that needs to be done before the services are ready for production. I however think that they are out of scope for this assignment? I list some of them below.
 
 ## Linting/Check style
 
