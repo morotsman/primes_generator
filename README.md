@@ -6,7 +6,7 @@ Due to me being a bit lazy I put both services in the same repository, hope that
 
 ## Run the app
 
-> sbt run
+    sbt run
 
 Then select which service to start.
 
@@ -14,7 +14,7 @@ Manually test the app:
 
 Install [httpie] and then:
 
-> http --stream GET :8081/prime/17
+    http --stream GET :8081/prime/17
 
 I'm building the app with [sbt-native-packager].
 
