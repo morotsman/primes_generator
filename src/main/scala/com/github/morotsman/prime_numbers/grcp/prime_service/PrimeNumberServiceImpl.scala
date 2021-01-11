@@ -1,9 +1,9 @@
-package com.github.morotsman.dixa.grcp.prime_service
+package com.github.morotsman.prime_numbers.grcp.prime_service
 
 import akka.NotUsed
 import akka.grpc.GrpcServiceException
 import akka.stream.scaladsl.Source
-import com.github.morotsman.dixa.grcp._
+import com.github.morotsman.prime_numbers.grcp._
 import io.grpc.Status
 
 class PrimeNumberServiceImpl() extends PrimesService {

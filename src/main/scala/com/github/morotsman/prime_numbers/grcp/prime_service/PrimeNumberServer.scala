@@ -1,9 +1,9 @@
-package com.github.morotsman.dixa.grcp.prime_service
+package com.github.morotsman.prime_numbers.grcp.prime_service
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import com.typesafe.config.{Config, ConfigFactory}
-import com.github.morotsman.dixa.grcp._
+import com.github.morotsman.prime_numbers.grcp._
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.duration._

@@ -1,4 +1,4 @@
-package com.github.morotsman.dixa.grcp.proxy
+package com.github.morotsman.prime_numbers.grcp.proxy
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http

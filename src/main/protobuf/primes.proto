@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "com.github.morotsman.dixa.grcp";
+option java_package = "com.github.morotsman.prime_numbers.grcp";
 option java_outer_classname = "PrimesProto";
 
 package primes;

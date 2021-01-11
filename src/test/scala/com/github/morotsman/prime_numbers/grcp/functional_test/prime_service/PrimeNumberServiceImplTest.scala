@@ -1,12 +1,12 @@
-package com.github.morotsman.dixa.grcp.functional_test.prime_service
+package com.github.morotsman.prime_numbers.grcp.functional_test.prime_service
 
 import akka.actor.ActorSystem
 import akka.grpc.GrpcClientSettings
 import akka.http.scaladsl.Http
 import akka.stream.scaladsl.Sink
 import akka.testkit.TestKit
-import com.github.morotsman.dixa.grcp.prime_service.PrimeNumberServer
-import com.github.morotsman.dixa.grcp.{PrimesReply, PrimesRequest, PrimesServiceClient}
+import com.github.morotsman.prime_numbers.grcp.prime_service.PrimeNumberServer
+import com.github.morotsman.prime_numbers.grcp.{PrimesReply, PrimesRequest, PrimesServiceClient}
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.matchers.should.Matchers
@@ -15,6 +15,7 @@ import org.scalatest.wordspec.AnyWordSpecLike
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 import io.grpc.Status
+import org.scalatest.matchers.should
 
 class PrimeNumberServiceImplTest extends TestKit(ActorSystem("PrimesServer", PrimeNumberServer.serverConfig))
   with AnyWordSpecLike
@@ -82,6 +83,13 @@ class PrimeNumberServiceImplTest extends TestKit(ActorSystem("PrimesServer", Pri
         PrimesReply(2), PrimesReply(3), PrimesReply(5), PrimesReply(7), PrimesReply(11),
         PrimesReply(13), PrimesReply(17), PrimesReply(19), PrimesReply(23), PrimesReply(29)
       ))
+    }
+
+    "last number should be 999983 if upTO 1000000 was requested" in {
+      val source = client.generatePrimes(PrimesRequest(1000000))
+      val fr = source.runWith(Sink.last)
+      val result = Await.result(fr, 15.seconds)
+      result should === (PrimesReply(999983))
     }
   }
 

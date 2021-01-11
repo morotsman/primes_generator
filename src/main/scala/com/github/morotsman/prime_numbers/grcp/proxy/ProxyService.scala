@@ -1,4 +1,4 @@
-package com.github.morotsman.dixa.grcp.proxy
+package com.github.morotsman.prime_numbers.grcp.proxy
 
 import akka.util.ByteString
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
@@ -6,8 +6,8 @@ import akka.http.scaladsl.server.Directives._
 import akka.NotUsed
 import akka.event.Logging
 import akka.http.scaladsl.server.Route
-import akka.stream.scaladsl.{RestartSource, Source}
-import com.github.morotsman.dixa.grcp._
+import akka.stream.scaladsl.Source
+import com.github.morotsman.prime_numbers.grcp._
 
 
 class ProxyService(client: PrimesService) {

@@ -1,9 +1,9 @@
-package com.github.morotsman.dixa.grcp.prime_service
+package com.github.morotsman.prime_numbers.grcp.prime_service
 
 import akka.actor.testkit.typed.scaladsl.ActorTestKit
 import akka.actor.typed.ActorSystem
 import akka.stream.scaladsl.Sink
-import com.github.morotsman.dixa.grcp.{PrimesReply, PrimesRequest}
+import com.github.morotsman.prime_numbers.grcp.{PrimesReply, PrimesRequest}
 import io.grpc.Status
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.ScalaFutures

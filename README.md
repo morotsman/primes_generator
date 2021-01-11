@@ -1,4 +1,4 @@
-# The Assignment
+# The prime generator
 
 > Develop a set of 2 small services that work together to deliver a sequence of prime numbers up to a given number. 
 
@@ -162,7 +162,7 @@ When I tested this I didn't get the behaviour I expected when using [addToCoordi
 
 To manually test this one can use [httpie]. Here are is an example:
 
-    nikleo@SEMALM1095 Dixa-grcp % http --stream GET :8081/prime/17
+    http --stream GET :8081/prime/17
     HTTP/1.1 200 OK
     Content-Type: text/plain; charset=UTF-8
     Date: Fri, 08 Jan 2021 15:39:42 GMT

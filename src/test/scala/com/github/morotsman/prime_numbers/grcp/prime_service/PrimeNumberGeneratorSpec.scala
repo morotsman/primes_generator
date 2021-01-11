@@ -1,4 +1,4 @@
-package com.github.morotsman.dixa.grcp.prime_service
+package com.github.morotsman.prime_numbers.grcp.prime_service
 
 import org.scalacheck.Prop.forAll
 import org.scalacheck.{Gen, Properties}

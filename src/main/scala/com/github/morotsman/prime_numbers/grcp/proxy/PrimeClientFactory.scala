@@ -1,8 +1,8 @@
-package com.github.morotsman.dixa.grcp.proxy
+package com.github.morotsman.prime_numbers.grcp.proxy
 
 import akka.actor.ActorSystem
 import akka.grpc.GrpcClientSettings
-import com.github.morotsman.dixa.grcp.PrimesServiceClient
+import com.github.morotsman.prime_numbers.grcp.PrimesServiceClient
 import com.typesafe.config.ConfigFactory
 
 object PrimeClientFactory {

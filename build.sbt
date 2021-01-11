@@ -1,4 +1,4 @@
-name := "Dixa-grcp"
+name := "prime_numbers"
 
 version := "0.1"
 
