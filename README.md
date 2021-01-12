@@ -42,7 +42,7 @@ I'm not a prime number generator expert, so I used [google] to find a good algor
     
     val primes: Stream[Int] = 2 #:: Stream.from(3, 2).filter(i => primes.takeWhile(j => j * j <= i).forall(k => i % k > 0))
 
-More time could be spent on this. But this algorithm doesn't blow the stack, it is also reasonable fast compared to some other one I found. 
+More time could be spent on this. But this algorithm doesn't blow the stack, it is also reasonable fast compared to some other ones I found. 
 
 ### proto
 
